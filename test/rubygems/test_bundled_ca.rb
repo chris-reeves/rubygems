@@ -1,13 +1,18 @@
 # frozen_string_literal: true
 require 'rubygems/test_case'
 require 'net/http'
+require 'rubygems/openssl'
+
+unless defined?(OpenSSL::SSL)
+  warn 'Skipping bundled certificates tests.  openssl not found.'
+end
+
 require 'rubygems/request'
 
 # = Testing Bundled CA
 #
 # The tested hosts are explained in detail here: https://github.com/rubygems/rubygems/commit/5e16a5428f973667cabfa07e94ff939e7a83ebd9
 #
-
 class TestBundledCA < Gem::TestCase
 
   THIS_FILE = File.expand_path __FILE__
@@ -54,4 +59,4 @@ class TestBundledCA < Gem::TestCase
     assert_https('fastly.rubygems.org')
   end
 
-end
+end if defined?(OpenSSL::SSL)
