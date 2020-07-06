@@ -111,7 +111,7 @@ Bugfixes:
   - Restore previous `BUNDLE_GEMFILE` in `bundler/inline` [#7418](https://github.com/rubygems/bundler/pull/7418)
   - Fix error when using `gem` DSL's `:glob` option for selecting gemspecs from a specific source [#7419](https://github.com/rubygems/bundler/pull/7419)
 
-Changes:
+Improvements:
 
   - `bundle config` no longer warns when using "old interface" (might be deprecated again in the future) [#7475](https://github.com/rubygems/bundler/pull/7475)
   - `bundle update` no longer warns when used without arguments (might be deprecated again in the future) [#7475](https://github.com/rubygems/bundler/pull/7475)
@@ -240,22 +240,24 @@ Documentation:
 
 ## 2.0.2 (2019-06-13)
 
-Changes:
+Improvements:
 
-  - Fixes for Bundler integration with ruby-src ([#6941](https://github.com/rubygems/bundler/pull/6941), [#6973](https://github.com/bundler/bundler/pull/6973), [#6977](https://github.com/bundler/bundler/pull/6977), [#6315](https://github.com/bundler/bundler/pull/6315), [#7061](https://github.com/bundler/bundler/pull/7061))
   - Use `__dir__` instead of `__FILE__` when generating a gem with `bundle gem` ([#6503](https://github.com/rubygems/bundler/pull/6503))
   - Use `https` on externals links in the Bundler gemspec ([#6721](https://github.com/rubygems/bundler/pull/6721))
-  - Removed duplicate gem names from the suggested `did you mean` list for gem typos ([#6739](https://github.com/rubygems/bundler/pull/6739))
-  - Removed Ruby 1.x compatibility code ([#6764](https://github.com/rubygems/bundler/pull/6764), [#6806](https://github.com/bundler/bundler/pull/6806))
-  - Fixed an issue where `bundle remove` would crash with certain Gemfiles ([#6768](https://github.com/rubygems/bundler/pull/6769))
   - Fixed indentation in the Bundler executable template ([#6773](https://github.com/rubygems/bundler/pull/6773))
-  - Fixed an issue where plugins could register for the same Bundler hook multiple times ([#6775](https://github.com/rubygems/bundler/pull/6775))
   - Changed the "multiple sources" message in `bundle install` to be a warning instead of an error ([#6790](https://github.com/rubygems/bundler/pull/6790))
+  - Updated vendor libraries to their latest version ([#7076](https://github.com/rubygems/bundler/pull/7067), [#7068](https://github.com/bundler/bundler/pull/7068))
+
+Bugfixes:
+
+  - Fixes for Bundler integration with ruby-src ([#6941](https://github.com/rubygems/bundler/pull/6941), [#6973](https://github.com/bundler/bundler/pull/6973), [#6977](https://github.com/bundler/bundler/pull/6977), [#6315](https://github.com/bundler/bundler/pull/6315), [#7061](https://github.com/bundler/bundler/pull/7061))
+  - Removed duplicate gem names from the suggested `did you mean` list for gem typos ([#6739](https://github.com/rubygems/bundler/pull/6739))
+  - Fixed an issue where `bundle remove` would crash with certain Gemfiles ([#6768](https://github.com/rubygems/bundler/pull/6769))
+  - Fixed an issue where plugins could register for the same Bundler hook multiple times ([#6775](https://github.com/rubygems/bundler/pull/6775))
   - Fixed a bug where path gems would break when using `only_update_to_newer_versions` ([#6774](https://github.com/rubygems/bundler/pull/6774))
   - Fixed a bug where installing plugins with the `--deployment` setting would fail ([#6805](https://github.com/rubygems/bundler/pull/6805))
   - Fixed an issue where `bundle update` couldn't update & install a gem when `no_install` was set (a `bundle package` config) ([#7078](https://github.com/rubygems/bundler/pull/7078))
   - Fixed an issue where users could not run `bundle exec` on default gems ([#6963](https://github.com/rubygems/bundler/pull/6963))
-  - Updated vendor libraries to their latest version ([#7076](https://github.com/rubygems/bundler/pull/7067), [#7068](https://github.com/bundler/bundler/pull/7068))
   - Fixed an issue where the `github` source was not using `https` by default that we mentioned in the 2.0 release ([#7182](https://github.com/rubygems/bundler/pull/7182))
   - Fixed an issue where `rake release` was not outputting the message to users asking for a 2fa token ([#7199](https://github.com/rubygems/bundler/pull/7199))
 
@@ -266,7 +268,7 @@ Documentation:
 
 ## 2.0.1 (2019-01-04)
 
-Changes:
+Bugfixes:
 
   - Relaxed RubyGems requirement to `>= 2.5.0` ([#6867](https://github.com/rubygems/bundler/pull/6867))
 
@@ -280,9 +282,12 @@ Breaking Changes:
 
   - Bundler 2 now requires RubyGems 3.0.0 at minimum
 
-Changes:
+Bugfixes:
 
   - Ruby 2.6 compatibility fixes (@segiddins)
+
+Improvements:
+
   - Import changes from Bundler 1.17.3 release
 
   Note: To upgrade your Gemfile to Bundler 2 you will need to run `bundle update --bundler`
@@ -376,7 +381,7 @@ Features:
 
 ## 1.16.6 (2018-10-05)
 
-Changes:
+Improvements:
 
   - Add an error message when adding a gem with `bundle add` that's already in the bundle ([#6341](https://github.com/rubygems/bundler/issues/6341), @agrim123)
   - Add Homepage, Source Code and Changelog URI metadata fields to the `bundle gem` gemspec template (@walf443)
@@ -398,7 +403,7 @@ Documentation:
 
 ## 1.16.5 (2018-09-18)
 
-Changes:
+Improvements:
 
   - Add support for TruffleRuby (@eregon)
 
@@ -414,7 +419,7 @@ Bugfixes:
 
 ## 1.16.4 (2018-08-17)
 
-Changes:
+Improvements:
 
   - Welcome new members to the Bundler core team (@indirect)
   - Don't mutate original error trees when determining version_conflict_message (@greysteil)
@@ -456,7 +461,7 @@ Documentation:
 
 ## 1.16.2 (2018-04-20)
 
-Changes:
+Improvements:
 
   - Include the gem's source in the gem install error message when available (@papanikge)
   - Remove unnecessary executable bit from gem template (@voxik)
@@ -1234,7 +1239,7 @@ Performance:
 
 ## 1.10.6 (2015-07-22)
 
-Workarounds:
+Bugfixes:
 
   - only warn on invalid gemspecs (@indirect)
 
@@ -1246,7 +1251,7 @@ Bugfixes:
 
 ## 1.10.5 (2015-06-24)
 
-Workarounds:
+Bugfixes:
 
   - don't add or update BUNDLED WITH during `install` with no changes (@segiddins)
 
@@ -1258,12 +1263,9 @@ Bugfixes:
 
 ## 1.10.4 (2015-06-16)
 
-Workarounds:
-
-  - don't add BUNDLED WITH to the lock when Spring runs `check` over and over (@indirect)
-
 Bugfixes:
 
+  - don't add BUNDLED WITH to the lock when Spring runs `check` over and over (@indirect)
   - display "with native extensions" log output correctly (@ivantsepp)
   - alias `i` to `install`, `c` to `check`, and `e` to `exec` (@indirect)
 
@@ -1444,7 +1446,7 @@ Features:
   - prefer gemspecs closest to the directory root ([#3428](https://github.com/rubygems/bundler/issues/3428), @segiddins)
   - debug log for API request limits ([#3452](https://github.com/rubygems/bundler/issues/3452), @neerfri)
 
-"Features":
+Improvements:
 
   - Molinillo resolver, shared with CocoaPods (@segiddins)
   - updated Thor to v0.19.1 (@segiddins)
@@ -1517,9 +1519,6 @@ Bugfixes:
 Bugfixes:
 
   - gemfile `github` blocks now work ([#3379](https://github.com/rubygems/bundler/issues/3379), @indirect)
-
-Bugfixes from v1.7.13:
-
   - look up installed gems in remote sources ([#3300](https://github.com/rubygems/bundler/issues/3300), [#3368](https://github.com/bundler/bundler/issues/3368), [#3377](https://github.com/bundler/bundler/issues/3377), [#3380](https://github.com/bundler/bundler/issues/3380), [#3381](https://github.com/bundler/bundler/issues/3381), @indirect)
   - look up gems across all sources to satisfy dependencies ([#3365](https://github.com/rubygems/bundler/issues/3365), @keiths-osc)
   - request dependencies for no more than 100 gems at a time ([#3367](https://github.com/rubygems/bundler/issues/3367), @segiddins)
@@ -1612,7 +1611,7 @@ Bugfixes:
 
   - Fix source blocks sometimes causing deployment mode to fail wrongly ([#3298](https://github.com/rubygems/bundler/issues/3298), @TimMoore)
 
-Features(?):
+Features:
 
   - Support `platform :mri_22` and related version bits ([#3309](https://github.com/rubygems/bundler/issues/3309), @thomasfedb)
 
@@ -2552,7 +2551,7 @@ Features:
   - Make it possible to override a .gemspec dependency's source in the
     Gemfile
 
-Removed:
+Breaking Changes:
 
   - Removed bundle lock
   - Removed bundle install <path>
@@ -2837,7 +2836,7 @@ Bugfixes:
 
 ## 1.0.2 (October 2, 2010)
 
-Bugfix:
+Bugfixes:
 
   - Actually include the man pages in the gem, so help works
 
