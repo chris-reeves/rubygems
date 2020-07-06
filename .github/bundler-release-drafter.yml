@@ -1,0 +1,78 @@
+---
+
+template: |
+  ## (Unreleased)
+
+  $CHANGES
+
+name-template: "bundler-v$RESOLVED_VERSION"
+
+tag-template: "bundler-v$RESOLVED_VERSION"
+
+categories:
+  - title: "Security:"
+    labels:
+      - "type: security"
+
+  - title: "Breaking Changes:"
+    labels:
+      - "type: major bump"
+
+  - title: "Highlights:"
+    labels:
+      - "type: highlight"
+
+  - title: "Deprecations:"
+    labels:
+      - "type: deprecation"
+
+  - title: "Features:"
+    labels:
+      - "type: feature implementation"
+
+  - title: "Performance:"
+    labels:
+      - "type: performance"
+
+  - title: "Documentation:"
+    labels:
+      - "type: documentation"
+
+  - title: "Improvements:"
+    labels:
+      - "type: improvement"
+
+  - title: "Bugfixes:"
+    labels:
+      - "type: bug fix"
+
+change-template: "  - $TITLE [#$NUMBER]($URL)"
+
+no-changes-template: "  No changes."
+
+exclude-labels:
+  - "skip-bundler-changelog"
+
+include-labels:
+  - "type: security"
+  - "type: major bump"
+  - "type: highlight"
+  - "type: deprecation"
+  - "type: feature implementation"
+  - "type: performance"
+  - "type: documentation"
+  - "type: improvement"
+  - "type: bug fix"
+
+version-resolver:
+  major:
+    labels:
+      - "type: major bump"
+
+  minor:
+    labels:
+      - "type: feature implementation"
+      - "type: highlight"
+      - "type: deprecation"
+
+  default: patch
