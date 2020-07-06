@@ -37,6 +37,7 @@ namespace :release do
     require "net/http"
     require "json"
     _username, token = Netrc.read["api.github.com"]
+    token ||= ENV["GITHUB_TOKEN"]
 
     host = opts.fetch(:host) { "https://api.github.com/" }
     path = opts.fetch(:path)
@@ -126,6 +127,31 @@ namespace :release do
                   :name => tag,
                   :body => release_notes(version),
                   :prerelease => version.prerelease?,
+                }
+  end
+
+  desc "Sync the current draft release with the changelog"
+  task :github_draft do
+    def unreleased_notes
+      section_token = "## "
+      unreleased_section_title = "#{section_token}(Unreleased)"
+      changelog_content = File.open("CHANGELOG.md", "r:UTF-8", &:read).split("\n")
+
+      unreleased_content = changelog_content.take_while {|line| line.start_with?(unreleased_section_title) || !line.start_with?(section_token) }
+
+      unreleased_content.join("\n").strip
+    end
+
+    version = Bundler::GemHelper.gemspec.version
+    tag = "bundler-v#{version}"
+
+    gh_api_post :path => "/repos/rubygems/rubygems/releases",
+                :body => {
+                  :tag_name => tag,
+                  :name => tag,
+                  :body => unreleased_notes,
+                  :prerelease => version.prerelease?,
+                  :draft => true,
                 }
   end
 
