@@ -25,8 +25,6 @@ class Gem::Security::Policy
   # options.
 
   def initialize(name, policy = {}, opt = {})
-    require 'openssl'
-
     @name = name
 
     @opt = opt
